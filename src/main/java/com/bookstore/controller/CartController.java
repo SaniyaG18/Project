@@ -28,10 +28,10 @@ public class CartController {
         return cartService.displayCart(cart);
     }
 
-    @PostMapping("/addBook")
-    public void addBookToCart(@RequestBody Cart cart, @RequestBody Book book) {
+    @PostMapping("/addBook/{bookTitle}")
+    public void addBookToCart(@RequestBody Cart cart, @PathVariable String bookTitle) {
        
-       cartService.addBookToCart(cart, book);
+       cartService.addBookToCart(cart, bookTitle);
     }
 
     @PutMapping("/update")

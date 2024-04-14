@@ -10,8 +10,10 @@ import com.bookstore.entity.Book;
 @Repository
 public interface BookRepository extends JpaRepository<Book,Integer>{
 	
-	List<Book> findByTitle(String bookTitle);
-	List<Book> findByAuthor(String bookAuthor);
-	List<Book> findByGenre(String bookGenre);
+	//Method name should be similar to variable name
+	
+	List<Book> findByBookTitle(String bookTitle);
+	List<Book> findByBookAuthor(String bookAuthor);
+	List<Book> findByBookGenre(String bookGenre);
 
 }

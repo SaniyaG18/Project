@@ -30,7 +30,7 @@ public class BookController {
     }
 
     @GetMapping("/title/{title}")
-    public List<Book> findBookByTitle(@PathVariable String bookTitle) {
+    public List<Book> searchBookByTitle(@PathVariable String bookTitle) {
        
         return bookService.findBookByTitle(bookTitle);
     }
@@ -47,7 +47,7 @@ public class BookController {
         return bookService.findBookByGenre(bookGenre);
     }
 
-    @PostMapping
+    @PostMapping("/viewall")
     public Book addBook(@RequestBody Book book) {
         
         return bookService.addBook(book);

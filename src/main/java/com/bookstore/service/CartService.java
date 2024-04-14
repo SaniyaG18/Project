@@ -8,7 +8,7 @@ import com.bookstore.entity.Cart;
 public interface CartService {
 	
 	List<Cart> displayCart(Cart cart);
-	void addBookToCart(Cart cart,Book  book);
+	void addBookToCart(Cart cart,String bookTitle);
 	void updateCart(Cart cart);
 	Cart removeCart(int orderId);
 	

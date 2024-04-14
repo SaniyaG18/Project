@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.bookstore.entity.Book;
 import com.bookstore.entity.Cart;
 import com.bookstore.exception.ResourceException;
+import com.bookstore.repository.BookRepository;
 import com.bookstore.repository.CartRepository;
 import com.bookstore.service.CartService;
 
@@ -19,28 +20,40 @@ public class CartServiceImp implements CartService {
 	@Autowired
 	private CartRepository cartrepository;
 	
+	@Autowired
+	private BookRepository bookrepository;
+	
 	@Override
 	public List<Cart> displayCart(Cart cart) {
 		return cartrepository.findAll();
 	}
 
 	@Override
-	 public void addBookToCart(Cart cart, Book book) {
-	        try{
-	        	// Assuming a book can be added directly to the list of books in the cart
-		        List<Book> books = cart.getBooks();
-		        books.add(book);
-		        // Update total price and quantity accordingly
-		        cart.setTotalPrice(cart.getTotalPrice());
-		        cart.setQuantity(cart.getQuantity() + 1);
-		        // Update order date
-		        cart.setOrderDate(new Date());
+	public void addBookToCart(Cart cart, String bookTitle) {
+	    try {
+	        // Lookup the book by title from a repository or database
+	        List<Book> book = bookrepository.findByBookTitle(bookTitle);
+	        
+	        // Check if the book is found
+	        if (book != null) {
+//	            // Assuming a book can be added directly to the list of books in the cart
+//	            List<Book> books = cart.getBooks();
+//	            books.add(book);
+	            cart.setBooks(book);
+	            // Update total price and quantity accordingly
+	            cart.setTotalPrice(cart.getTotalPrice());
+	            cart.setQuantity(cart.getQuantity());
+	            
+	            // Update order date
+	            cart.setOrderDate(new Date());
+	        } else {
+	            throw new ResourceException("Book with title '" + bookTitle + "' not found");
 	        }
-	        catch(Exception e) {
-	        	throw new ResourceException("Error adding book to cart"+e);
-	        }
+	    } catch (Exception e) {
+	        throw new ResourceException("Error adding book to cart");
 	    }
-	 
+	}
+
 	 
 	@Override
 	 public void updateCart(Cart cart) {

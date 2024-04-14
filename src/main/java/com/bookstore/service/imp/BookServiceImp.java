@@ -31,7 +31,7 @@ public class BookServiceImp implements BookService{
 
 	@Override
 	public List<Book> findBookByTitle(String bookTitle) {
-		List<Book> bookList = bookrepository.findByTitle(bookTitle);
+		List<Book> bookList = bookrepository.findByBookTitle(bookTitle);
 		List<Book> activeBookList = new ArrayList<>();
         for (Book book: bookList){
             if (book.isBookAvailability()){
@@ -47,7 +47,7 @@ public class BookServiceImp implements BookService{
 
 	@Override
 	public List<Book> findBookByAuthor(String bookAuthor) {
-		List<Book> bookList = bookrepository.findByAuthor(bookAuthor);
+		List<Book> bookList = bookrepository.findByBookAuthor(bookAuthor);
 		List<Book> activeBookList = new ArrayList<>();
         for (Book book: bookList){
             if (book.isBookAvailability()){
@@ -62,7 +62,7 @@ public class BookServiceImp implements BookService{
 
 	@Override
 	public List<Book> findBookByGenre(String bookGenre) {
-		List<Book> bookList = bookrepository.findByGenre(bookGenre);
+		List<Book> bookList = bookrepository.findByBookGenre(bookGenre);
 		List<Book> activeBookList = new ArrayList<>();
         for (Book book: bookList){
             if (book.isBookAvailability()){
