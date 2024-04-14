@@ -41,11 +41,7 @@ public class BookController {
         return bookService.findBookByAuthor(bookAuthor);
     }
 
-    @GetMapping("/genre/{genre}")
-    public List<Book> findBookByGenre(@PathVariable String bookGenre) {
-        
-        return bookService.findBookByGenre(bookGenre);
-    }
+
 
     @PostMapping("/viewall")
     public Book addBook(@RequestBody Book book) {

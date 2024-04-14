@@ -34,17 +34,8 @@ public class Book {
 	@Column(name="Book_Author")
 	private String bookAuthor;
 	
-	@Column(name="Book_Genre")
-	private String bookGenre;
-	
-	@Column(name="Book_Description")
-	private String bookDescription;
-	
 	@Column(name="Book_Language")
 	private String bookLanguage;
-	
-	@Column(name="Book_Format")
-	private String bookFormat;
 	
 	@Column(name="Book_Availability")
 	private boolean bookAvailability;

@@ -10,7 +10,7 @@ public interface BookService {
 	Optional<Book> findBookById(int id);
 	List<Book> findBookByTitle(String bookTitle);
 	List<Book> findBookByAuthor(String bookAuthor);
-	List<Book> findBookByGenre(String bookGenre);
+	
 	
 	//	add book 
 	Book addBook(Book book);

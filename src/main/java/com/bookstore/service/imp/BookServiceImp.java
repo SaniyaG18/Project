@@ -60,21 +60,7 @@ public class BookServiceImp implements BookService{
         return activeBookList;
 	}
 
-	@Override
-	public List<Book> findBookByGenre(String bookGenre) {
-		List<Book> bookList = bookrepository.findByBookGenre(bookGenre);
-		List<Book> activeBookList = new ArrayList<>();
-        for (Book book: bookList){
-            if (book.isBookAvailability()){
-                activeBookList.add(book);
-            }
-            else {
-            	throw new ResourceException("Book is not Available");
-            }
-        }
-        return activeBookList;
-	}
-
+	
 	@Override
 	public Book addBook(Book book) {
 		try {
@@ -119,9 +105,6 @@ public class BookServiceImp implements BookService{
 	        Book existingBook = optionalBook.get();
 	        existingBook.setBookTitle(updatedBook.getBookTitle());
 	        existingBook.setBookAuthor(updatedBook.getBookAuthor());
-	        existingBook.setBookGenre(updatedBook.getBookGenre());
-	        existingBook.setBookDescription(updatedBook.getBookDescription());
-	        existingBook.setBookFormat(updatedBook.getBookFormat());
 	        existingBook.setBookAvailability(updatedBook.isBookAvailability());
 	        existingBook.setBookPrice(updatedBook.getBookPrice());
 	        existingBook.setBookRating(updatedBook.getBookRating());
